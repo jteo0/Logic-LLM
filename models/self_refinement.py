@@ -50,7 +50,7 @@ class SelfRefinementEngine:
         return full_prompt
 
     def safe_execute_program(self, id, logic_program, debug = False):
-        program = self.program_executor(logic_program, self.dataset_name)c
+        program = self.program_executor(logic_program, self.dataset_name)
         # cannot parse the program
         if program.flag == False:
             answer = self.backup_generator.get_backup_answer(id)
