@@ -19,7 +19,7 @@ class SelfRefinementEngine:
         self.model_name = args.model_name
         self.dataset_name = args.dataset_name
         self.backup_strategy = args.backup_strategy
-        self.openai_api = OpenAIModel(args.api_key, 'gpt-4', args.stop_words, args.max_new_tokens)
+        self.openai_api = OpenAIModel(args.api_key, 'gemini-2.5-flash', args.stop_words, args.max_new_tokens)
         self.current_round = current_round
 
         self.logic_programs = self.load_logic_programs()
@@ -50,7 +50,7 @@ class SelfRefinementEngine:
         return full_prompt
 
     def safe_execute_program(self, id, logic_program, debug = False):
-        program = self.program_executor(logic_program, self.dataset_name)
+        program = self.program_executor(logic_program, self.dataset_name)c
         # cannot parse the program
         if program.flag == False:
             answer = self.backup_generator.get_backup_answer(id)
