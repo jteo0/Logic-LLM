@@ -1,0 +1,128 @@
+Task: Given the wrong logic program and the error message, output the corrected logic program.
+The logic program uses the following format:
+- Facts: Predicate(Entity, True) or Predicate(Entity, False)
+- Rules: Predicate($x, True) >>> Predicate($x, True)
+- Query: Predicate(Entity, True/False)
+Common errors to fix:
+- Not(Predicate(Entity, True)) should be Predicate(Entity, False)
+- Multi-argument predicates like Likes(Anne, Bob, True) are valid
+- Rules must use >>> not -> or =>
+- Variables in rules must start with $
+------
+>>> Initial Program:
+Predicates:
+Furry($x, bool)
+Smart($x, bool)
+Kind($x, bool)
+
+Facts:
+Furry(Anne, True)
+Smart(Anne, True)
+Not(Kind(Anne, True))
+
+Rules:
+Furry($x, True) >>> Smart($x, True)
+Smart($x, True) >>> Kind($x, True)
+
+Query:
+Kind(Anne, True)
+>>> Error Message:
+Syntax error: Operator expected
+>>> Corrected Program:
+Predicates:
+Furry($x, bool)
+Smart($x, bool)
+Kind($x, bool)
+
+Facts:
+Furry(Anne, True)
+Smart(Anne, True)
+Kind(Anne, False)
+
+Rules:
+Furry($x, True) >>> Smart($x, True)
+Smart($x, True) >>> Kind($x, True)
+
+Query:
+Kind(Anne, True)
+------
+>>> Initial Program:
+Predicates:
+Green($x, bool)
+Quiet($x, bool)
+Red($x, bool)
+
+Facts:
+Green(Charlie, True)
+Quiet(Dave, True)
+Red(Dave, True)
+Not(Green(Dave, True))
+
+Rules:
+Green($x, True) -> Quiet($x, True)
+Quiet($x, True) >>> Red($x, True)
+
+Query:
+Red(Charlie, True)
+>>> Error Message:
+Syntax error: Operator expected
+>>> Corrected Program:
+Predicates:
+Green($x, bool)
+Quiet($x, bool)
+Red($x, bool)
+
+Facts:
+Green(Charlie, True)
+Quiet(Dave, True)
+Red(Dave, True)
+Green(Dave, False)
+
+Rules:
+Green($x, True) >>> Quiet($x, True)
+Quiet($x, True) >>> Red($x, True)
+
+Query:
+Red(Charlie, True)
+------
+>>> Initial Program:
+Predicates:
+Big($x, bool)
+Cold($x, bool)
+Furry($x, bool)
+
+Facts:
+Big(Anne, True)
+Cold(Bob, True)
+Furry(Bob, True)
+
+Rules:
+Big($x, True) && Cold($x, True) >>> Furry($x, True)
+
+Query:
+Furry(Anne, True)
+>>> Error Message:
+Parsing Error
+>>> Corrected Program:
+Predicates:
+Big($x, bool)
+Cold($x, bool)
+Furry($x, bool)
+
+Facts:
+Big(Anne, True)
+Cold(Bob, True)
+Furry(Bob, True)
+Cold(Anne, False)
+
+Rules:
+Big($x, True) && Cold($x, True) >>> Furry($x, True)
+
+Query:
+Furry(Anne, True)
+------
+>>> Initial Program:
+[[PROGRAM]]
+>>> Error Message:
+[[ERROR MESSAGE]]
+>>> Corrected Program:

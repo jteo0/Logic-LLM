@@ -6,6 +6,7 @@ import os
 from tqdm import tqdm
 from symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
 from symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
+from symbolic_solvers.prolog_solver.prolog_solver import Prolog_Program
 import argparse
 import random
 from backup_answer_generation import Backup_Answer_Generator
@@ -25,7 +26,9 @@ class SelfRefinementEngine:
         # self.reasoning_results = self.load_inference_results()
 
         program_executor_map = {'AR-LSAT': LSAT_Z3_Program,
-                                'FOLIO': FOL_Prover9_Program}
+                                'FOLIO': FOL_Prover9_Program,
+                                'ProntoQA': Prolog_Program,
+                                'ProofWriter': Prolog_Program}
         self.program_executor = program_executor_map[self.dataset_name]
         self.backup_generator = Backup_Answer_Generator(self.dataset_name, self.backup_strategy, self.args.backup_LLM_result_path)
 
