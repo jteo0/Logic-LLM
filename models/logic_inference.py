@@ -3,7 +3,7 @@ import os
 from tqdm import tqdm
 from symbolic_solvers.fol_solver.prover9_solver import FOL_Prover9_Program
 from symbolic_solvers.prolog_solver.prolog_solver import Prolog_Program as Pyke_Program
-from symbolic_solvers.csp_solver.csp_solver import CSP_Program
+from symbolic_solvers.clp_solver.clp_solver import CLP_Program as CSP_Program
 from symbolic_solvers.z3_solver.sat_problem_solver import LSAT_Z3_Program
 import argparse
 import random
