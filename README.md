@@ -1,21 +1,6 @@
-# Logic-LM
-Data and Codes for ["LOGIC-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning"](https://arxiv.org/abs/2305.12295) (Findings of EMNLP 2023). 
-
-Authors: **Liangming Pan, Alon Albalak, Xinyi Wang, William Yang Wang**. 
-
-[NLP Group](http://nlp.cs.ucsb.edu/), University of California, Santa Barbara
-
 ## Introduction
 
-Large Language Models (LLMs) have shown human-like reasoning abilities but still struggle with complex logical problems. This paper introduces a novel framework, **Logic-LM**, which integrates LLMs with symbolic solvers to improve logical problem-solving. Our method first utilizes LLMs to translate a natural language problem into a symbolic formulation. Afterward, a deterministic symbolic solver performs inference on the formulated problem. We also introduce a self-refinement module, which utilizes the symbolic solver's error messages to revise symbolic formalizations. We demonstrate Logic-LM's effectiveness on five logical reasoning datasets: ProofWriter, PrOntoQA, FOLIO, LogicalDeduction, and AR-LSAT. On average, Logic-LM achieves a significant performance boost of 39.2% over using LLM alone with standard prompting and 18.4% over LLM with chain-of-thought prompting. Our findings suggest that Logic-LM, by combining LLMs with symbolic logic, offers a promising avenue for faithful logical reasoning. 
-
-![The general framework of Logic-LM](./framework.png)
-
-First, install all the required packages:
-
-```bash
-pip install -r requirements.txt
-```
+A modification of the [Logic-LM Framework](https://github.com/teacherpeterpan/Logic-LLM). The original integrates LLMs with symbolic solvers to improve logical problem solving. This modification applies more stringent solvers by implementing Prolog in the place of PyKE and CLP.
 
 ## Datasets
 
@@ -26,6 +11,13 @@ The datasets we used are preprocessed and stored in the `./data` folder. We eval
 - [FOLIO](https://github.com/Yale-LILY/FOLIO): First-Order Logic reasoning dataset. We use the entire FOLIO test set for evaluation, consisting of 204 examples.
 - [LogicalDeduction](https://github.com/google/BIG-bench/tree/main/bigbench/benchmark_tasks/logical_deduction): Constraint Satisfaction Problems (CSPs). We use the full test set consisting of 300 examples.
 - [AR-LSAT](https://github.com/zhongwanjun/AR-LSAT): Analytical Reasoning (AR) problems, containing all analytical logic reasoning questions from the Law School Admission Test from 1991 to 2016. We use the test set which has 230 multiple-choice questions. 
+
+## Usage
+First, install all the required packages:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Baselines
 
@@ -125,26 +117,6 @@ python models/self_refinement.py \
 
 The self-refinement results will be saved in `outputs/logic_inferences`. 
 
-## Reference
-Please cite the paper in the following format if you use this dataset during your research.
-
-```
-@inproceedings{PanLogicLM23,
-  author       = {Liangming Pan and
-                  Alon Albalak and
-                  Xinyi Wang and
-                  William Yang Wang},
-  title        = {{Logic-LM:} Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning},
-  booktitle    = {Findings of the 2023 Conference on Empirical Methods in Natural Language Processing (Findings of EMNLP)},
-  address      = {Singapore},
-  year         = {2023},
-  month        = {Dec},
-  url          = {https://arxiv.org/abs/2305.12295}
-}
-```
-
 ## Credit
-The codes for the SMT solver are modified from [SatLM](https://github.com/xiye17/sat-lm). 
-
-## Q&A
-If you encounter any problem, please either directly contact the [Liangming Pan](liangmingpan@ucsb.edu) or leave an issue in the github repo.
+- Data and Codes for ["LOGIC-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning"](https://arxiv.org/abs/2305.12295) (Findings of EMNLP 2023). 
+- The codes are modified from [here](https://github.com/teacherpeterpan/Logic-LLM). 

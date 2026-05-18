@@ -1,0 +1,83 @@
+Task: Given the wrong logic program and the error message, output the corrected logic program.
+The logic program uses the following format:
+- Facts: Predicate(Entity, True) or Predicate(Entity, False)
+- Rules: Predicate($x, True) >>> Predicate($x, True)
+- Query: Predicate(Entity, True/False)
+Common errors to fix:
+- Not(Predicate(Entity, True)) should be Predicate(Entity, False)
+- Variables in rules must start with $
+- Rules must use >>> not -> or =>
+------
+>>> Initial Program:
+Predicates:
+Tumpus($x, bool)
+Vumpus($x, bool)
+Shy($x, bool)
+
+Facts:
+Tumpus(Alex, True)
+Not(Shy(Alex, True))
+
+Rules:
+Tumpus($x, True) -> Vumpus($x, True)
+Vumpus($x, True) >>> Shy($x, True)
+
+Query:
+Shy(Alex, True)
+>>> Error Message:
+Syntax error: Operator expected
+>>> Corrected Program:
+Predicates:
+Tumpus($x, bool)
+Vumpus($x, bool)
+Shy($x, bool)
+
+Facts:
+Tumpus(Alex, True)
+Shy(Alex, False)
+
+Rules:
+Tumpus($x, True) >>> Vumpus($x, True)
+Vumpus($x, True) >>> Shy($x, True)
+
+Query:
+Shy(Alex, True)
+------
+>>> Initial Program:
+Predicates:
+Jompus($x, bool)
+Yumpus($x, bool)
+Fruity($x, bool)
+
+Facts:
+Jompus(Max, True)
+
+Rules:
+Jompus(x, True) >>> Yumpus(x, True)
+Yumpus($x, True) >>> Fruity($x, True)
+
+Query:
+Fruity(Max, True)
+>>> Error Message:
+Parsing Error
+>>> Corrected Program:
+Predicates:
+Jompus($x, bool)
+Yumpus($x, bool)
+Fruity($x, bool)
+
+Facts:
+Jompus(Max, True)
+
+Rules:
+Jompus($x, True) >>> Yumpus($x, True)
+Yumpus($x, True) >>> Fruity($x, True)
+
+Query:
+Fruity(Max, True)
+------
+>>> Initial Program:
+[[PROGRAM]]
+>>> Error Message:
+[[ERROR MESSAGE]]
+>>> Corrected Program:
