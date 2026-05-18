@@ -1,0 +1,287 @@
+% easychair.tex,v 3.5 2017/03/15
+
+\documentclass{easychair}
+%\documentclass[EPiC]{easychair}
+%\documentclass[EPiCempty]{easychair}
+%\documentclass[debug]{easychair}
+%\documentclass[verbose]{easychair}
+%\documentclass[notimes]{easychair}
+%\documentclass[withtimes]{easychair}
+%\documentclass[a4paper]{easychair}
+%\documentclass[letterpaper]{easychair}
+
+\usepackage{doc}
+\usepackage{multirow}
+
+% use this if you have a long article and want to create an index
+% \usepackage{makeidx}
+
+% In order to save space or manage large tables or figures in a
+% landcape-like text, you can use the rotating and pdflscape
+% packages. Uncomment the desired from the below.
+%
+% \usepackage{rotating}
+% \usepackage{pdflscape}
+
+% Some of our commands for this guide.
+%
+\newcommand{\easychair}{\textsf{easychair}}
+\newcommand{\miktex}{MiK{\TeX}}
+\newcommand{\texniccenter}{{\TeX}nicCenter}
+\newcommand{\makefile}{\texttt{Makefile}}
+\newcommand{\latexeditor}{LEd}
+
+%\makeindex
+
+%% Front Matter
+%%
+% Regular title as in the article class.
+%
+\title{INSERT TITLE}
+
+% Authors are joined by \and. Their affiliations are given by \inst, which indexes
+% into the list defined using \institute
+%
+\author{
+Jeslyn Theodora\inst{1}\thanks{Designed and implemented the class style}
+\and
+    Feru Pratama Kartajaya\inst{1}\thanks{Did numerous tests and provided a lot of suggestions}
+\and
+   Andrei Voronkov\inst{3}\inst{4}\inst{5}\thanks{Masterminded EasyChair and created versions
+     3.0--3.5 of the class style}
+}
+
+% Institutes for affiliations are also joined by \and,
+\institute{
+  Fakultas Ilmu Komputer, Universitas Indonesia\\
+  \email{email i guess}
+ }
+
+%  \authorrunning{} has to be set for the shorter version of the authors' names;
+% otherwise a warning will be rendered in the running heads. When processed by
+% EasyChair, this command is mandatory: a document without \authorrunning
+% will be rejected by EasyChair
+
+\authorrunning{Mokhov, Sutcliffe and Voronkov}
+
+% \titlerunning{} has to be set to either the main title or its shorter
+% version for the running heads. When processed by
+% EasyChair, this command is mandatory: a document without \titlerunning
+% will be rejected by EasyChair
+\titlerunning{INSERT TITLE}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  ini gatau perlu ato gk. i guess klo gasempet gausah?
+\end{abstract}
+
+% The table of contents below is added for your convenience. Please do not use
+% the table of contents if you are preparing your paper for publication in the
+% EPiC Series or Kalpa Publications series
+
+\setcounter{tocdepth}{2}
+{\small
+\tableofcontents}
+
+%\section{To mention}
+%
+%Processing in EasyChair - number of pages.
+%
+%Examples of how EasyChair processes papers. Caveats (replacement of EC
+%class, errors).
+
+%------------------------------------------------------------------------------
+\section{Pendahuluan}
+\label{sect:introduksi}
+
+Disini jelasin latar belakang. biasa si, + tujuan
+
+\subsection{Scope Penelitian}
+\subsection{Related Work? Kajian Pustaka}
+ini jelasin paper awalnya secara singkat
+\subsection{Kontribusi Penelitian}
+
+%------------------------------------------------------------------------------
+\section{Metodologi}
+\label{sect:metoda}
+
+%------------------------------------------------------------------------------
+\subsection{Arsitektur Sistem}
+\label{sect:arsitektur}
+
+penjelasan sistemnya ngapain. kasi diagram
+
+%------------------------------------------------------------------------------
+\subsection{Pipeline}
+\label{sect:pipeline}
+
+yg ini kurang tahu relevan ato gk
+
+%---------------------------------------------------------------
+
+\noindent\small
+\begin{verbatim}
+\title{The {\easychair} Class File\\
+       Documentation and Guide for Authors%
+\thanks{Other people who contributed to this document include Maria Voronkov
+  (Imperial College and EasyChair) and Graham Gough (The University of
+  Manchester).}}
+
+% Authors are joined by \and. Their affiliations are given by \inst, which indexes
+% into the list defined using \institute
+%
+\author{
+Serguei A. Mokhov\inst{1}\thanks{Designed and implemented the class style}
+\and
+   Geoff Sutcliffe\inst{2}\thanks{Did numerous tests and provided a lot of suggestions}
+\and
+   Andrei Voronkov\inst{3}\inst{4}\inst{5}\thanks{Masterminded EasyChair and created 
+     versions 3.0--3.5 of the class style}
+}
+
+% Institutes for affiliations are also joined by \and,
+\institute{
+  Concordia University,
+  Montreal, Quebec, Canada\\
+  \email{mokhov@cse.concordia.ca}
+\and
+   University of Miami,
+   Miami, Florida, U.S.A.\\
+   \email{geoff@cs.miami.edu}\\
+\and
+   University of Manchester,
+   Manchester, U.K.\\
+   \email{andrei@voronkov.com}\\
+\and
+   Chalmers University of Technology,
+   Gothenburg, Sweden
+\and
+   EasyChair
+ }
+
+\authorrunning{Mokhov, Sutcliffe and Voronkov}
+\titlerunning{The {\easychair} Class File}
+\end{verbatim}
+\normalsize
+
+%------------------------------------------------------------------------------
+\section{Experimen}
+\label{sect:Experimen}
+
+Untuk memastikan perbandingan yang akurat, eksperimen dilakukan dengan mengikuti seluruh konfigurasi pada \cite{logiclm}, dengan fokus pada komponen yang dimodifikasi. Model yang digunakan sebagai LLM dasar adalah ChatGPT (gpt-3.5-turbo), GPT-3.5 (text-davinci-003), dan GPT-4 (gpt-4). 
+
+Dataset yang digunakan untuk evaluasi adalah:
+\begin{itemize}
+    \item \textbf{PrOntoQA} \cite{PrOntoQA} adalah dataset sintetis yang dibuat untuk menganalisis kemampuan LLM dalam penalaran deduktif. Versi yang digunakan adalah \textit{fictional characters} tersulit dari dataset tersebut dengan subset 5-hop (memerlukan 5 jumlah langkah penalaran) tersulit untuk evaluasi. Setiap pertanyaan dalam PrOntoQA bertujuan untuk memvalidasi kebenaran suatu fakta baru, seperti "True or false: Alex is not shy." (Benar atau salah: Alex tidak pemalu.).
+    \item \textbf{ProofWriter} \cite{ProofWriter} adalah dataset yang digunakan untuk penalaran logis deduktif. Dibandingkan dengan PrOntoQA, pertanyaan yang disediakan ProofWriter menggunakan bahasa yang lebih natural. Subset yang digunakan adalah subset \textit{open-world assumption} (OWA), dimana setiap contoh adalah suatu pair (\textit{problem, goal}) yang memiliki label salah satu dari (\textit{PROVED, DISPROVED, UNKNOWN}). Bagian yang diambil adalah subset tersulit \textit{depth-5} yang memiliki $\leq 5$ hops. Test set yang digunakan terdiri dari 600 contoh dengan memastikan distribusi label yang seimbang.
+    \item \textbf{Logical Deduction} \cite{LogicalDeduction} adalah dataset penalaran logis dari benchmark kolaboratif BigBench. Sebagian besar dari masalahnya berkaitan dengan mendeduksi urutan rangkaian obyek dari kondisi minimal. Seluruh test set yang digunakan terdiri dari 300 contoh.
+\end{itemize}
+
+Metrik yang akan diukur adalah \textit{Overall Accuracy}, \textit{Executable Accuracy}, dan \textit{Executable Rate}. \textit{Overall Accuracy} merupakan akurasi matching eksak diantara jawaban prediksi model dengan referensi pada data uji. \textit{Executable Accuracy} merupakan akurasi yang dihitung hanya dari sampel yang berhasil dieksekusi. \textit{Executable Rate} mengukur proporsi sampel yang berhasil dieksekusi secara valid, yaitu dimana proses reasoning menghasilkan output yang diproses tanpa error.
+
+Dengan adanya keterbatasan anggaran, tahap self-refinement tidak dilakukan dan tidak akan dipertimbangkan dalam evaluasi.
+
+\section{Hasil dan Evaluasi}
+\label{sect:evaluasi}
+
+\begin{table}[tb]\small
+\begin{center}
+\begin{tabular}{llcccccc}
+\hline
+Dataset & Model 
+& \multicolumn{2}{c}{Overall Accuracy}
+& \multicolumn{2}{c}{Executable Rate}
+& \multicolumn{2}{c}{Executable Accuracy} \\
+\cline{3-4} \cline{5-6} \cline{7-8}
+
+& 
+& Log-LM & Log-LM-M
+& Log-LM & Log-LM-M
+& Log-LM & Log-LM-M \\
+\hline
+
+\multirow{3}{*}{LogicalDeduction}
+& gpt-4            
+& 87.63 & 87.63
+& 100.00 & 100.00
+& 87.60 & 87.63 \\
+
+& text-davinci-003 
+& 62.00 & 62.00
+& 100.00   & 100.00
+& 62.00 & 62.00 \\
+
+& gpt-3.5-turbo    
+& \underline{65.67} & 64.67
+& --- & 99.00
+& --- & 65.32 \\
+\hline
+
+\multirow{3}{*}{PrOntoQA}
+& gpt-4            
+& 83.20 & \underline{83.40}
+& 100.00 & 100.00
+& 83.20 & \underline{83.40} \\
+
+& text-davinci-003 
+& \underline{85.00} & 83.80
+& \underline{99.40}   & 97.20
+& \underline{84.90}   & 84.57 \\
+
+& gpt-3.5-turbo    
+& \underline{61.00} & 54.00
+& --- & 70.20
+& --- & 58.69 \\
+\hline
+
+\multirow{3}{*}{ProofWriter} 
+& gpt-4            
+& 79.66 & \underline{97.50}
+& 99.00 & \underline{100.00}
+& 79.60 & \underline{97.50} \\
+
+& text-davinci-003 
+& 71.45 & \underline{84.31}
+& 87.30   & \underline{97.83}
+& 73.60   & \underline{85.49} \\
+
+& gpt-3.5-turbo    
+& \underline{58.33} & 53.33
+& --- & 56.33
+& --- & 68.34 \\
+
+\hline
+\end{tabular}
+\end{center}
+\caption{Perbandingan Kinerja Logic-LM (Log-LM) dan Logic-LM-Modif (Log-LM-M). Tidak ada data Executable Rate dan Executable Accuracy untuk gpt-3.5-turbo. Nilai lebih tinggi diberikan garis bawah.}
+\label{tab:results}
+\end{table}
+
+Dari hasil eksperimen diatas, dapat disimpulkan beberapa hal. Pertama, tidak ada perbedaan signifikan di hasil ketiga metrik untuk dataset LogicalDeduction dan PrOntoQA. Kedua, poin satu memiliki pengecualian untuk hasil evaluasi dataset PrOntoQA dengan model gpt-3.5-turbo. Ketiga, Logic-LM-Modif mencapai peningkatan rata 12.2\% dibandingkan Logic-LM pada dataset ProofWriter.
+
+
+
+\section{Kesimpulan}
+
+Kesimpulan + mungkin apa yang bisa ditambahkan di riset kedepan?
+
+
+%------------------------------------------------------------------------------
+
+\label{sect:bib}
+\bibliographystyle{plain}
+%\bibliographystyle{alpha}
+%\bibliographystyle{unsrt}
+%\bibliographystyle{abbrv}
+\bibliography{easychair}
+
+%------------------------------------------------------------------------------
+% Index
+%\printindex
+
+%------------------------------------------------------------------------------
+\end{document}
+
