@@ -1,26 +1,3 @@
-"""
-CLP(FD)-based CSP solver using SWI-Prolog to replace python-constraint.
-
-Replaces: symbolic_solvers/csp_solver/csp_solver.py
-Dataset:  LogicalDeduction
-
-Approach:
-  Translates the Logic-LM CSP DSL into a SWI-Prolog CLP(FD) program,
-  writes it to a temp file, consults it, and queries for solutions.
-
-  CLP(FD) advantages over python-constraint:
-  - Native Prolog integration (consistent with our Prolog solver)
-  - More expressive constraint language
-  - Handles the same constraint types (numeric, AllDifferent)
-  - Better propagation = potentially faster solving
-
-DSL format (unchanged):
-    Domain:      1: leftmost / N: rightmost
-    Variables:   var_name [IN] [1, 2, ..., N]
-    Constraints: var1 > var2  /  var == 3  /  AllDifferentConstraint([...])
-    Query:       A) var == 3 ::: description
-"""
-
 import os
 import re
 import uuid

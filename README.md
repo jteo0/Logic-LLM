@@ -125,26 +125,6 @@ python models/self_refinement.py \
 
 The self-refinement results will be saved in `outputs/logic_inferences`. 
 
-## Reference
-Please cite the paper in the following format if you use this dataset during your research.
-
-```
-@inproceedings{PanLogicLM23,
-  author       = {Liangming Pan and
-                  Alon Albalak and
-                  Xinyi Wang and
-                  William Yang Wang},
-  title        = {{Logic-LM:} Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning},
-  booktitle    = {Findings of the 2023 Conference on Empirical Methods in Natural Language Processing (Findings of EMNLP)},
-  address      = {Singapore},
-  year         = {2023},
-  month        = {Dec},
-  url          = {https://arxiv.org/abs/2305.12295}
-}
-```
-
 ## Credit
-The codes for the SMT solver are modified from [SatLM](https://github.com/xiye17/sat-lm). 
-
-## Q&A
-If you encounter any problem, please either directly contact the [Liangming Pan](liangmingpan@ucsb.edu) or leave an issue in the github repo.
+- Data and Codes for ["LOGIC-LM: Empowering Large Language Models with Symbolic Solvers for Faithful Logical Reasoning"](https://arxiv.org/abs/2305.12295) (Findings of EMNLP 2023). 
+- The codes are modified from [here](https://github.com/teacherpeterpan/Logic-LLM). 
